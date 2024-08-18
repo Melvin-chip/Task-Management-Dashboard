@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { UnstyledButton, Tooltip, Title, rem } from '@mantine/core';
-import {
-  IconHome2,
-  IconGauge,
-} from '@tabler/icons-react';
+import { UnstyledButton, Tooltip, Title } from '@mantine/core';
+import { IconPlus } from '@tabler/icons-react';
 import classes from './Dashboard.module.css';
+import Logo from '@/components/logo';
+import MainLogoIcon from '../../images/logos/siteicon/android-chrome-512x512.png';
+import LogoIcon2 from '../../images/logos/logo2.png';
+import LogoIcon3 from '../../images/logos/logo2.png';
 
 const mainLinksMockdata = [
-  { icon: IconHome2, label: 'Home' },
-  { icon: IconGauge, label: 'Dashboard' },
+  { icon: LogoIcon2, label: 'Home company' },
+  // { icon: IconGauge, label: 'Dashboard' },
 ];
 
 const linksMockdata = [
@@ -48,7 +49,7 @@ export default function DashboardPage() {
         className={classes.mainLink}
         data-active={link.label === active || undefined}
       >
-        <link.icon style={{ width: rem(22), height: rem(22) }} stroke={1.5} />
+        <Logo src={link.icon} size="sm" color="cyan" />
       </UnstyledButton>
     </Tooltip>
   ));
@@ -73,8 +74,15 @@ export default function DashboardPage() {
       <nav className={classes.navbar}>
         <div className={classes.wrapper}>
           <div className={classes.aside}>
-            <div className={classes.logo}>{/* <MantineLogo type="mark" size={30} /> */}</div>
+            <div className={classes.logo}>
+              <Logo src={MainLogoIcon} size="" />
+            </div>
             {mainLinks}
+            <Tooltip label="add" position="right" withArrow transitionProps={{ duration: 0 }}>
+              <UnstyledButton onClick={() => {}} className={classes.mainLink}>
+                <IconPlus size={20} strokeWidth={1.5} />
+              </UnstyledButton>
+            </Tooltip>
           </div>
           <div className={classes.main}>
             <Title order={4} className={classes.title}>
